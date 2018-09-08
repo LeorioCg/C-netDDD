@@ -7,10 +7,11 @@ using Projeto.Domain.Contracts;
 using Projeto.Domain.Entities;
 using Projeto.Aplication.ViewModels;
 using Projeto.Domain.Services;
+using Projeto.Aplication.Contracts;
 
 namespace Projeto.Aplication.AplicationServices
 {
-    class PlanoAplicationService
+    public class PlanoAplicationService : IPlanoAplicationService
     {
         private readonly IPlanoDomainService domainService;
 
@@ -25,7 +26,7 @@ namespace Projeto.Aplication.AplicationServices
             p.Descricao = model.Descricao;
         }
 
-        public void Alterar(PlanoEdicaoViewModel model)
+        public void Atualizar(PlanoEdicaoViewModel model)
         {
             Plano p = domainService.ObterporId(model.IdPlano);
             p.Descricao = model.Descricao;

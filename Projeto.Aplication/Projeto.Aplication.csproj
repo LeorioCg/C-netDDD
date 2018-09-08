@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="AplicationServices\ClienteAplicationService.cs" />
     <Compile Include="AplicationServices\PlanoAplicationService.cs" />
+    <Compile Include="Contracts\IClienteAplicationService.cs" />
+    <Compile Include="Contracts\IPlanoAplicationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ClienteCadastroViewModel.cs" />
     <Compile Include="ViewModels\ClienteConsultaViewModel.cs" />
@@ -51,9 +53,7 @@
     <Compile Include="ViewModels\PlanoConsultaViewModel.cs" />
     <Compile Include="ViewModels\PlanoEdicaoViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Projeto.Domain\Projeto.Domain.csproj">
       <Project>{1f8293a1-6ed2-4f07-b0f8-9e5c399643c5}</Project>

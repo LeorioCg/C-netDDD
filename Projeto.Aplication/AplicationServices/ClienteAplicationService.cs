@@ -1,4 +1,5 @@
-﻿using Projeto.Aplication.ViewModels;
+﻿using Projeto.Aplication.Contracts;
+using Projeto.Aplication.ViewModels;
 using Projeto.Domain.Contracts;
 using Projeto.Domain.Entities;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Projeto.Aplication.AplicationServices
 {
-    public class ClienteAplicationService
+    public class ClienteAplicationService : IClienteAplicationService
     {
         private readonly IClienteDomainService domainService;
 
@@ -49,6 +50,36 @@ namespace Projeto.Aplication.AplicationServices
         public List<ClienteConsultaViewModel> ObterTodos()
         {
             List<Cliente> clientes = new List<Cliente>();
+
+            List<ClienteConsultaViewModel> lista = new List<ClienteConsultaViewModel>();
+            foreach(Cliente c in clientes)
+            {
+                ClienteConsultaViewModel model = new ClienteConsultaViewModel();
+                model.IdCliente = c.IdCliente;
+                model.Nome = c.Nome;
+                model.Email = c.Email;
+                model.DataNascimento = c.DataNascimento;
+                model.IdPlano = c.IdPlano;
+
+                lista.Add(model);
+            }
+            return lista;
         }
+
+        public ClienteConsultaViewModel ObterPorId(int idCliente)
+        {
+            Cliente c = domainService.ObterporId(idCliente);
+
+            ClienteConsultaViewModel model = new ClienteConsultaViewModel();
+            model.IdCliente = c.IdCliente;
+            model.Nome = c.Nome;
+            model.Email = c.Email;
+            model.DataNascimento = c.DataNascimento;
+            model.IdPlano = c.IdPlano;
+            model.Descricao = c.Plano.Descricao;
+
+            return model;
+        }
+        
     }
 }
